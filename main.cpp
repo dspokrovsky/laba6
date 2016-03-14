@@ -8,29 +8,52 @@
 
 
 
+using namespace std;
 
 int main()
 {
+
+
     Itext *ptr = new CopyrightDecorator(
                 new text("myText"));
-    ptr->print();
+
 
     Itext *ptr2 = new FrameDecorator(
                     new CopyrightDecorator(
                     new text("myText"))
                 );
-    ptr2->print();
+
     Itext *ptr3 =
                     new FrameDecorator(
                     new text("myText"))
                 ;
-    ptr3->print();
 
     Itext *ptr4 = new CopyrightDecorator(
                     new FrameDecorator (
                     new text("myText"))
                 );
     ptr4->print();
+
+    cout << "Menu:"<< endl << "1 - text" << endl << "2 - Frame" << endl << "3 - copyr" << endl;
+    for (;;){
+        int t;
+        cin >> t;
+        switch(t){
+        case 1:
+            ptr->print();
+            break;
+        case 2:
+            ptr2->print();
+            break;
+        case 3:
+            ptr3->print();
+            break;
+        case 4:
+            ptr4->print();
+            break;
+        }
+    }
+
     return 0;
 }
 

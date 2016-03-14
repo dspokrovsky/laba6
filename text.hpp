@@ -63,9 +63,9 @@ class FrameDecorator: public Decorator
     /*virtual*/
     void print()
     {
-        std::cout << "**************"<<std::endl;
+        std::cout << "****************************"<<std::endl;
         Decorator::print();
-        std::cout <<std::endl << "**************"<<std::endl;
+        std::cout <<std::endl << "****************************"<<std::endl;
     }
 };
 #endif // TEXT_HPP
