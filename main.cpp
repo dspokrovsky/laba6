@@ -14,13 +14,16 @@ int main()
 {
 
 
-    Itext *ptr = new CopyrightDecorator(
-                new text("myText"));
+    Itext *ptr = new text("myText");
+
+
+    Itext *ptr1 = new CopyrightDecorator(
+                new text("myText"),"MYCOPYRIGHT");
 
 
     Itext *ptr2 = new FrameDecorator(
                     new CopyrightDecorator(
-                    new text("myText"))
+                    new text("myText"),"POKROVSKY")
                 );
 
     Itext *ptr3 =
@@ -30,12 +33,15 @@ int main()
 
     Itext *ptr4 = new CopyrightDecorator(
                     new FrameDecorator (
-                    new text("myText"))
+                    new text("myText")),"COPY"
                 );
-    ptr4->print();
 
-    cout << "Menu:"<< endl << "1 - text" << endl << "2 - Frame" << endl << "3 - copyr" << endl;
-    for (;;){
+    Itext *ptr5 = new LogoDecorator(
+                    new text("myText"),"LOGO");
+    ptr5->print();
+
+    cout << "Menu:"<< endl << "1 - Text" << endl << "2 - Frame" << endl << "3 - Copiright\n"<<"4 - Copyright + Frame\n"<<"5- Frame + Copiright\n" << endl <<"6 - Logo"<<endl;
+    for (;;){        
         int t;
         cin >> t;
         switch(t){
@@ -43,13 +49,19 @@ int main()
             ptr->print();
             break;
         case 2:
-            ptr2->print();
+            ptr3->print();
             break;
         case 3:
-            ptr3->print();
+            ptr1->print();
             break;
         case 4:
             ptr4->print();
+            break;
+        case 5:
+            ptr2->print();
+            break;
+        case 6:
+            ptr5->print();
             break;
         }
     }

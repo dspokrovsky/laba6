@@ -18,7 +18,6 @@ public:
 class text: public Itext{
 public:
     text(std::string k):text_(k){}
-
     virtual void print(){
         std::cout << text_;
     }
@@ -38,20 +37,19 @@ public:
         m_component->print();
     }
 };
+
 //дополнительная функциональность
 class CopyrightDecorator: public Decorator
 {
   public:
-    CopyrightDecorator(Itext *w): Decorator(w){}
-
-    /*virtual*/
+    CopyrightDecorator(Itext *w,std::string str): Decorator(w), copyright_(str){}
     void print()
     {
-        // 7. Делегирование базовому классу и
         Decorator::print();
-        // 7. реализация дополнительной функциональности
-        std::cout << "   (c)Copyright" << '\n';
+        std::cout << "   (c)"<< copyright_ << '\n';
     }
+private:
+    std::string copyright_;
 };
 
 //дополнительная функциональность
@@ -59,8 +57,6 @@ class FrameDecorator: public Decorator
 {
   public:
     FrameDecorator(Itext *w): Decorator(w){}
-
-    /*virtual*/
     void print()
     {
         std::cout << "****************************"<<std::endl;
@@ -68,4 +64,17 @@ class FrameDecorator: public Decorator
         std::cout <<std::endl << "****************************"<<std::endl;
     }
 };
+class LogoDecorator: public Decorator
+{
+  public:
+    LogoDecorator(Itext *w,std::string str): Decorator(w),logo_(str){}
+    void print()
+    {
+        std::cout << logo_<<std::endl;
+        Decorator::print();
+    }
+private:
+    std::string logo_;
+};
+
 #endif // TEXT_HPP
